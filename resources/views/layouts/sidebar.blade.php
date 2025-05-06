@@ -3,13 +3,8 @@
     <!-- User Profile at the Top -->
     <div class="user-profile text-center py-3">
         <a href="{{ url('/profile') }}" class="d-block {{ $activeMenu == 'profile' ? 'active' : '' }}">
-            {{-- <img src="{{ Auth::user()->profile_picture ? asset('uploads/profile/' . Auth::user()->profile_picture) : asset('profile.png') }}"
-                 class="img-circle elevation-2"
-                 alt="User Image"
-                 style="width: 60px; height: 60px; object-fit: cover;"> --}}
-
-            <img src="{{ Storage::disk('public')->exists('profile/' . $user->profile_picture) ? asset('storage/profile/' . $user->profile_picture) : asset('profile.png') }}"
-                class="img-circle elevation-2" alt="User Image" style="width: 40px; height: 40px; object-fit: cover;">
+            <img src="{{ Storage::disk('public')->exists('profile/' . Auth::user()->profile_picture) ? asset('storage/profile/' . Auth::user()->profile_picture) : asset('profile.png') }}"
+            class="img-circle elevation-2" alt="User Image" style="width: 40px; height: 40px; object-fit: cover;">
             <p class="mt-2 mb-0 text-white">{{ Auth::user()->nama }}</p>
         </a>
     </div>
