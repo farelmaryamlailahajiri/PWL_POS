@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\Api\RegisterController;
 use App\Http\Controllers\BarangController;
 use App\Http\Controllers\KategoriController;
 use App\Http\Controllers\LevelController;
@@ -42,7 +43,7 @@ Route::get('logout', [AuthController::class, 'logout'])->middleware('auth');
 Route::get('register', [AuthController::class, 'register'])->name('register');
 Route::post('register', [AuthController::class, 'postRegister']);
 Route::get('profile', [AuthController::class, 'profile'])->middleware('auth')->name('profile');
- Route::post('profile/update', [AuthController::class, 'update'])->middleware('auth');
+Route::post('profile/update', [AuthController::class, 'update'])->middleware('auth');
 
 Route::middleware(['auth'])->group(function () { // artinya semua route di dalam group ini harus login dulu
     Route::get('/', [WelcomeController::class, 'index']);
@@ -157,4 +158,5 @@ Route::middleware(['auth'])->group(function () { // artinya semua route di dalam
             Route::get('/barang/export_excel',[BarangController::class, 'export_excel']); //export excel
             Route::get('/barang/export_pdf', [BarangController::class, 'export_pdf']); // export pdf
     });
+   
 });
